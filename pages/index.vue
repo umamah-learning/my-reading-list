@@ -44,7 +44,7 @@ const toggleStatus = async (book) => {
 
 const deleteBook = async (book) => {
   await $fetch(`/api/books/${book.id}`, { method: 'DELETE' })
-  emit('updated')
+  fetchBooks()
 }
 </script>
 
@@ -53,21 +53,24 @@ const deleteBook = async (book) => {
     <div style="display:flex;justify-content: space-between;align-items: center;">
     <h1>My Books</h1>
     <NuxtLink to="/add-book">
-      <Button class="mb-4" style="background: #ff9999;">Add New Book</Button>
+      <UButton icon="i-lucide-plus" class="mb-4">Add New Book</UButton>
     </NuxtLink>
     </div>
     <ul style="list-style-type: square;padding-left: 1rem;">
-      <li v-for="book in books" :key="book.id" style="padding: 0.2rem;margin-left: 0.7rem;">
-        <strong>{{ book.title }}</strong> by {{ book.author }}
+      <li v-for="book in books" :key="book.id" style="padding: 0.2rem;margin-left: 0.7rem;display: flex;align-items: center;">
+        <UIcon class="mr-3 size-4" name="i-lucide-book" />
+        <strong>{{ book.title }}</strong> &nbsp;by {{ book.author }}
         <label style="margin-left: 1em;">
           <input 
+            class="accent-green-600"
             type="checkbox" 
             :checked="book.is_read === 1" 
             @change="toggleStatus(book)" 
           />
           {{ book.is_read === 1 ? 'Read' : 'Unread' }}
         </label>
-        <Button style="margin-left: 1em;" variant="destructive" @click="deleteBook(book)">Delete</Button>
+        <UButton icon="i-lucide-x" size="xs" color="red" variant="soft" @click="deleteBook(book)" style="margin-left: 1em;"/>
+        <!-- <Button style="margin-left: 1em;" variant="destructive" @click="deleteBook(book)">Delete</Button> -->
       </li>
     </ul>
   </div>

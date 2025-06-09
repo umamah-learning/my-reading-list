@@ -8,6 +8,7 @@
     "start": "nuxt start"
   },
   "dependencies": {
+    "@nuxt/icon": "^1.13.0",
     "@nuxt/ui": "^2.5.1",
     "nuxt": "^3.12.0",
     "sqlite": "^5.1.1",
