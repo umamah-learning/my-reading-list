@@ -1,0 +1,16 @@
+{
+  "name": "my-reading-list",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "nuxt dev",
+    "build": "nuxt build",
+    "start": "nuxt start"
+  },
+  "dependencies": {
+    "@nuxt/ui": "^2.5.1",
+    "nuxt": "^3.12.0",
+    "sqlite": "^5.1.1",
+    "sqlite3": "^5.1.6"
+  }
+}
